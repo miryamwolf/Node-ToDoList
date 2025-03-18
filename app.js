@@ -8,14 +8,13 @@ const port = 3000;
 dotenv.config();
 // Middleware to parse JSON
 app.use(express.json());
-const autho=process.env.RENDER_API_KEY;
 
 // Endpoint to get installed apps
 app.get('/', async (req, res) => {
     try {
         const response = await axios.get('https://api.render.com/v1/services?includePreviews=true&limit=20', {
             headers: {
-                'Authorization': `Bearer rnd_Me0Cl11eIIuVEXK3AYREjEtFpTyg`,
+                'Authorization': `${process.env.RENDER_API_KEY}`,
                 'Accept': 'application/json'
                 
             }
